@@ -22,9 +22,9 @@ public class GuessMenuController : MonoBehaviour
 
     private int guessCount;
 
-    private string[] countries = { "denmark", "pakistan", "finland", "atlanta" };
-    private string[] objects = { "doll", "fan" };
-    private string[] animals = { "ferret", "dog", "duck" };
+    private string[] destinations = { "atlanta", "australia", "denmark", "dubai", "france", "finland"  };
+    private string[] objects = { "apple", "airplane", "doll", "door", "fan", "fork" };
+    private string[] animals = { "ape", "alligator", "dog", "duck",  "frog", "ferret" };
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +63,7 @@ public class GuessMenuController : MonoBehaviour
             guess = guess.ToLower();
 
             if (text[guessCount].text == "Destination")
-                isValid = countries.Contains(guess);
+                isValid = destinations.Contains(guess);
 
             else if (text[guessCount].text == "Animal")
                 isValid = animals.Contains(guess);
@@ -77,6 +77,7 @@ public class GuessMenuController : MonoBehaviour
         {
             tickIcon[guessCount].enabled = true;
             wrongIcon[guessCount].enabled = false;
+            StatsController.Instance.AddScore();
         }
         else
         {
@@ -89,7 +90,10 @@ public class GuessMenuController : MonoBehaviour
     {
         guessCount += 1;
         if (guessCount == resultedCatergories.Length)
+        {
+            GameController.Instance.OnNextRound();
             return;
+        }
         currentCategory.sprite = resultedCatergories[guessCount].sprite;
         currentCategory.SetNativeSize();
     }

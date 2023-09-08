@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public JackpotController jackpotController;
-    public GuessMenuController guessMenuController;
+
     public static GameController Instance { get; private set; }
 
+    public JackpotController jackpotController;
+    public GuessMenuController guessMenuController;
 
     public Dictionary<int, int> stoppedSlotsCategories = new Dictionary<int, int>();
     public int letterIndex;
@@ -17,13 +18,10 @@ public class GameController : MonoBehaviour
 
     public RowItemCategory[] rowItemsCategories;
 
-    public Button playBtn;
-    public Button spinBtn;
-
-    public GameObject mainMenu;
-    public GameObject gameMenu;
-
     private bool rotationDone;
+
+    public int currentRound = 1;
+    public int totalRounds = 3;
 
     private void Awake()
     {
@@ -42,9 +40,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spinBtn.interactable = false;
-        spinBtn.onClick.AddListener(OnSpinBtnClicked);
-        playBtn.onClick.AddListener(OnPlayBtnClicked);
+
     }
 
     // Update is called once per frame
@@ -65,17 +61,36 @@ public class GameController : MonoBehaviour
         } 
     }
 
+    public void OnNextRound()
+    {
+        currentRound += 1;
+
+        if (currentRound > totalRounds)
+        {
+            MenuController.Instance.ShowGameEndPopup();
+            return;
+        }
+        stoppedSlotsCategories.Clear();
+        MenuController.Instance.spinBtn.interactable = true;
+        MenuController.Instance.SetRoundText(currentRound);
+    }
+
+    //Button Listeners
+
+    //Main Menu
+    public void OnPlayBtnClicked()
+    {
+        stoppedSlotsCategories.Clear();
+        currentRound = 1;
+        MenuController.Instance.spinBtn.interactable = true;
+        MenuController.Instance.SetRoundText(currentRound);
+        MenuController.Instance.SetScoreText(0);
+    }
+
+    //Game Menu
     public void OnSpinBtnClicked()
     {
         rotationDone = false;
         jackpotController.StartSpinning();
-    }
-
-    public void OnPlayBtnClicked()
-    {
-        stoppedSlotsCategories.Clear();
-        spinBtn.interactable = true;
-        gameMenu.SetActive(true);
-        mainMenu.SetActive(false);
     }
 }

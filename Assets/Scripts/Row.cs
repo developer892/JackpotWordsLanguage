@@ -87,12 +87,12 @@ public class Row : MonoBehaviour
         rowStopped = false;
         timeInterval = 0.02f;
 
-        for (int i = 0; i < 53; i++)
+        for (int i = 0; i < 53 - GameController.Instance.currentRound; i++)
         {
             for (int j = 0; j < rowItems.Length; j++)
             {
-                if (rowItems[j].transform.localPosition.y <= yPos[yPos.Length - 1] - 75)
-                    rowItems[j].transform.localPosition = new Vector2(rowItems[j].transform.localPosition.x, yPos[0]);
+                if (rowItems[j].transform.localPosition.y <= yPos[yPos.Length - 1] - 100)
+                    rowItems[j].transform.localPosition = new Vector2(rowItems[j].transform.localPosition.x, rowItems[j].transform.localPosition.y + 300);
             }
 
             for (int j = 0; j < rowItems.Length; j++)
@@ -119,18 +119,18 @@ public class Row : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        for (int i = 0; i < rowItems.Length; i++)
+        /*for (int i = 0; i < rowItems.Length; i++)
         {
             var list = yPos.ToList();
             float closest = list.OrderBy(item => Math.Abs(rowItems[i].gameObject.transform.localPosition.y - item)).First();
             rowItems[i].transform.localPosition = new Vector2(rowItems[i].transform.localPosition.x, closest);
 
             yield return new WaitForSeconds(0.1f);
-        }
+        }*/
 
         for (int j = 0; j < rowItems.Length; j++)
         {
-            if (rowItems[j].gameObject.transform.localPosition.y == 0f)
+            if (rowItems[j].gameObject.transform.localPosition.y <= 50f && rowItems[j].gameObject.transform.localPosition.y >= -50f)
                 stoppedSlot = rowItems[j].index;
         }
 

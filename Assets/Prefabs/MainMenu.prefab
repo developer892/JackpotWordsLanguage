@@ -237,8 +237,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 121 Correct
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e929fd4cf872a64ca2f710c67ffe757, type: 2}
-  m_sharedMaterial: {fileID: 5602087425879009176, guid: 2e929fd4cf872a64ca2f710c67ffe757, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fc7f835afe0367f4183d0f154c92f472, type: 2}
+  m_sharedMaterial: {fileID: 5997638048552861162, guid: fc7f835afe0367f4183d0f154c92f472, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -642,8 +642,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 75000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e929fd4cf872a64ca2f710c67ffe757, type: 2}
-  m_sharedMaterial: {fileID: 5602087425879009176, guid: 2e929fd4cf872a64ca2f710c67ffe757, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fc7f835afe0367f4183d0f154c92f472, type: 2}
+  m_sharedMaterial: {fileID: 5997638048552861162, guid: fc7f835afe0367f4183d0f154c92f472, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Jackport Words \nLanguage"
+  m_text: "Jackpot Words \nLanguage"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 22a05861d6d0d854998fef7fabb445d6, type: 2}
   m_sharedMaterial: {fileID: -6680764319199083798, guid: 22a05861d6d0d854998fef7fabb445d6, type: 2}
